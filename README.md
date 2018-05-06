@@ -1,6 +1,3 @@
 # Final-Project
 
-This is my project...
-
-
-afweajewflkjflewjlwaef
+Data Sci Final Project
