@@ -1,0 +1,512 @@
+guides(fill=FALSE) +
+ggtitle("hexbin")
+#Scatter by Group
+p4  = ggplot(df,aes(x = x, y = y,
+colour = as.factor(round(x*10,1)*20))) +
+ggtitle("scatter by group") +
+theme(legend.position="none") +
+geom_point(alpha = 0.3)
+p5  = p + ggtitle("contour")+
+geom_density2d() +
+theme_bw()
+p6 = ggplot(df, aes(x = x, y = y)) +
+ggtitle("scatter + regression line")+
+geom_point(shape = 1,alpha = 0.6, colour="navy") +
+geom_smooth()
+#Put all graphs onto one canvas
+grid.arrange(p1,p2,p3,p4,p5,p6, ncol=3)
+library(grid)
+##Scatter plot
+p = ggplot(df,aes(x = x,y = y))  +
+xlab("x") +
+ylab("y")
+p1 = p + geom_point() + ggtitle("scatter")
+p2 = p + geom_point(alpha = 0.1, colour="navy") +
+theme_bw() + ggtitle("scatter (alpha = 0.1)")
+##Hexbin
+p3 = p +
+stat_bin_hex(colour = "white", na.rm = TRUE, alpha = 0.9) +
+scale_fill_gradientn(colours=c("lightgrey","navy"),
+name = "Frequency", na.value = NA) +
+guides(fill=FALSE) +
+ggtitle("hexbin")
+#Scatter by Group
+p4  = ggplot(df,aes(x = x, y = y,
+colour = as.factor(round(x*10,1)*20))) +
+ggtitle("scatter by group") +
+theme(legend.position="none") +
+geom_point(alpha = 0.3)
+p5  = p + ggtitle("contour")+
+geom_density2d() +
+theme_bw()
+p6 = ggplot(df, aes(x = x, y = y)) +
+ggtitle("scatter + regression line")+
+geom_point(shape = 1,alpha = 0.6, colour="navy") +
+geom_smooth()
+#Put all graphs onto one canvas
+grid.arrange(p1,p2,p3,p4,p5,p6, ncol=3)
+p = ggplot(df,aes(x = x,y = y))  +
+xlab("x") +
+ylab("y")
+p1 = p + geom_point() + ggtitle("scatter")
+p2 = p + geom_point(alpha = 0.1, colour="navy") +
+theme_bw() + ggtitle("scatter (alpha = 0.1)")
+p1 = p + geom_point() + ggtitle("scatter")
+p1
+p2
+p3
+p3 = p +
+stat_bin_hex(colour = "white", na.rm = TRUE, alpha = 0.9) +
+scale_fill_gradientn(colours=c("lightgrey","navy"),
+name = "Frequency", na.value = NA) +
+guides(fill=FALSE) +
+ggtitle("hexbin")
+p3
+#################################
+#Examples of plots using ggplot2#
+#################################
+#Create data
+n <- 1000
+df <- data.frame(y = 1:n)
+df$x <- df$y  - 0.01*df$y^2 + rnorm(n, 0, 500)
+#Import library
+library(ggplot2)
+##Scatter plot
+p = ggplot(df,aes(x = x,y = y))  +
+xlab("x") +
+ylab("y")
+p1 = p + geom_point() + ggtitle("scatter")
+p2 = p + geom_point(alpha = 0.1, colour="navy") +
+theme_bw() + ggtitle("scatter (alpha = 0.1)")
+##Hexbin
+p3 = p +
+stat_bin_hex(colour = "white", na.rm = TRUE, alpha = 0.9) +
+scale_fill_gradientn(colours=c("lightgrey","navy"),
+name = "Frequency", na.value = NA) +
+guides(fill=FALSE) +
+ggtitle("hexbin")
+#Scatter by Group
+p4  = ggplot(df,aes(x = x, y = y,
+colour = as.factor(round(x*10,1)*20))) +
+ggtitle("scatter by group") +
+theme(legend.position="none") +
+geom_point(alpha = 0.3)
+p5  = p + ggtitle("contour")+
+geom_density2d() +
+theme_bw()
+p6 = ggplot(df, aes(x = x, y = y)) +
+ggtitle("scatter + regression line")+
+geom_point(shape = 1,alpha = 0.6, colour="navy") +
+geom_smooth()
+#Put all graphs onto one canvas
+grid.arrange(p1,p2,p3,p4,p5,p6, ncol=3)
+p3
+library(hexbin)
+library('hexbin')
+install.packages("hexbin")
+#################################
+#Examples of plots using ggplot2#
+#################################
+#Create data
+n <- 1000
+df <- data.frame(y = 1:n)
+df$x <- df$y  - 0.01*df$y^2 + rnorm(n, 0, 500)
+#Import library
+library(ggplot2)
+##Scatter plot
+p = ggplot(df,aes(x = x,y = y))  +
+xlab("x") +
+ylab("y")
+p1 = p + geom_point() + ggtitle("scatter")
+p2 = p + geom_point(alpha = 0.1, colour="navy") +
+theme_bw() + ggtitle("scatter (alpha = 0.1)")
+##Hexbin
+p3 = p +
+stat_bin_hex(colour = "white", na.rm = TRUE, alpha = 0.9) +
+scale_fill_gradientn(colours=c("lightgrey","navy"),
+name = "Frequency", na.value = NA) +
+guides(fill=FALSE) +
+ggtitle("hexbin")
+#Scatter by Group
+p4  = ggplot(df,aes(x = x, y = y,
+colour = as.factor(round(x*10,1)*20))) +
+ggtitle("scatter by group") +
+theme(legend.position="none") +
+geom_point(alpha = 0.3)
+p5  = p + ggtitle("contour")+
+geom_density2d() +
+theme_bw()
+p6 = ggplot(df, aes(x = x, y = y)) +
+ggtitle("scatter + regression line")+
+geom_point(shape = 1,alpha = 0.6, colour="navy") +
+geom_smooth()
+#Put all graphs onto one canvas
+grid.arrange(p1,p2,p3,p4,p5,p6, ncol=3)
+install.packages("gridExtra")
+library(gridExtra)
+#################################
+#Examples of plots using ggplot2#
+#################################
+#Create data
+n <- 1000
+df <- data.frame(y = 1:n)
+df$x <- df$y  - 0.01*df$y^2 + rnorm(n, 0, 500)
+#Import library
+library(ggplot2)
+##Scatter plot
+p = ggplot(df,aes(x = x,y = y))  +
+xlab("x") +
+ylab("y")
+p1 = p + geom_point() + ggtitle("scatter")
+p2 = p + geom_point(alpha = 0.1, colour="navy") +
+theme_bw() + ggtitle("scatter (alpha = 0.1)")
+##Hexbin
+p3 = p +
+stat_bin_hex(colour = "white", na.rm = TRUE, alpha = 0.9) +
+scale_fill_gradientn(colours=c("lightgrey","navy"),
+name = "Frequency", na.value = NA) +
+guides(fill=FALSE) +
+ggtitle("hexbin")
+#Scatter by Group
+p4  = ggplot(df,aes(x = x, y = y,
+colour = as.factor(round(x*10,1)*20))) +
+ggtitle("scatter by group") +
+theme(legend.position="none") +
+geom_point(alpha = 0.3)
+p5  = p + ggtitle("contour")+
+geom_density2d() +
+theme_bw()
+p6 = ggplot(df, aes(x = x, y = y)) +
+ggtitle("scatter + regression line")+
+geom_point(shape = 1,alpha = 0.6, colour="navy") +
+geom_smooth()
+#Put all graphs onto one canvas
+grid.arrange(p1,p2,p3,p4,p5,p6, ncol=3)
+library(hexbin)
+#################################
+#Examples of plots using ggplot2#
+#################################
+#Create data
+n <- 1000
+df <- data.frame(y = 1:n)
+df$x <- df$y  - 0.01*df$y^2 + rnorm(n, 0, 500)
+#Import library
+library(ggplot2)
+##Scatter plot
+p = ggplot(df,aes(x = x,y = y))  +
+xlab("x") +
+ylab("y")
+p1 = p + geom_point() + ggtitle("scatter")
+p2 = p + geom_point(alpha = 0.1, colour="navy") +
+theme_bw() + ggtitle("scatter (alpha = 0.1)")
+##Hexbin
+p3 = p +
+stat_bin_hex(colour = "white", na.rm = TRUE, alpha = 0.9) +
+scale_fill_gradientn(colours=c("lightgrey","navy"),
+name = "Frequency", na.value = NA) +
+guides(fill=FALSE) +
+ggtitle("hexbin")
+#Scatter by Group
+p4  = ggplot(df,aes(x = x, y = y,
+colour = as.factor(round(x*10,1)*20))) +
+ggtitle("scatter by group") +
+theme(legend.position="none") +
+geom_point(alpha = 0.3)
+p5  = p + ggtitle("contour")+
+geom_density2d() +
+theme_bw()
+p6 = ggplot(df, aes(x = x, y = y)) +
+ggtitle("scatter + regression line")+
+geom_point(shape = 1,alpha = 0.6, colour="navy") +
+geom_smooth()
+#Put all graphs onto one canvas
+grid.arrange(p1,p2,p3,p4,p5,p6, ncol=3)
+p2 = p + geom_point(alpha = 0.1, colour="navy") +
+theme_bw() + ggtitle("scatter (alpha = 0.1)")
+#################################
+#Examples of plots using ggplot2#
+#################################
+#Create data
+n <- 1000
+df <- data.frame(y = 1:n)
+df$x <- df$y  - 0.01*df$y^2 + rnorm(n, 0, 500)
+#Import library
+library(ggplot2)
+##Scatter plot
+p = ggplot(df,aes(x = x,y = y))  +
+xlab("x") +
+ylab("y")
+p1 = p + geom_point() + ggtitle("scatter")
+p2 = p + geom_point(alpha = 0.1, colour="navy") +
+theme_bw() + ggtitle("scatter (alpha = 0.1)")
+##Hexbin
+p3 = p +
+stat_bin_hex(colour = "white", na.rm = TRUE, alpha = 0.9) +
+scale_fill_gradientn(colours=c("lightgrey","navy"),
+name = "Frequency", na.value = NA) +
+guides(fill=FALSE) +
+ggtitle("hexbin")
+#Scatter by Group
+p4  = ggplot(df,aes(x = x, y = y,
+colour = as.factor(round(x*10,1)*20))) +
+ggtitle("scatter by group") +
+theme(legend.position="none") +
+geom_point(alpha = 0.3)
+p5  = p + ggtitle("contour")+
+geom_density2d() +
+theme_bw()
+p6 = ggplot(df, aes(x = x, y = y)) +
+ggtitle("scatter + regression line")+
+geom_point(shape = 1,alpha = 0.6, colour="navy") +
+geom_smooth()
+#Put all graphs onto one canvas
+grid.arrange(p1,p2,p3,p4,p5,p6, ncol=3)
+p2 = p + geom_
+p2 = p + geom_point(alpha = 0.1, colour="navy") +
+theme_bw() + ggtitle("scatter (alpha = 0.1)")
+p2
+temp <- tempfile()
+url <- "https://www2.census.gov/programs-surveys/acs/data/pums/2015/1-Year/csv_pia.zip"
+download.file(url, temp, mode="wb")
+unz <- unzip(temp, exdir=getwd())
+acs <- read.csv(unz[1])
+str(acs[,1:20])
+dim(acs)
+var_list <- c("HICOV","RAC1P","MAR","SEX","ESR","CIT","AGEP","PINCP","POVPIP","WKHP","SCHL")
+df <- acs[acs$AGEP >= 16, var_list]
+#Healthcare coverage (target variable):
+#Create one binary variable for calculations
+df$coverage[df$HICOV == 1] <- 0
+df$coverage[df$HICOV == 2] <- 1
+#another with characters
+df$hicov2[df$HICOV == 1] <- "With Healthcare"
+df$hicov2[df$HICOV == 2] <- "Without Healthcare"
+#Gender
+df$sex2[df$SEX == 1] <- "Male"
+df$sex2[df$SEX == 2] <- "Female"
+#Race
+df$race2[df$RAC1P == 1] <- "White alone"
+df$race2[df$RAC1P == 2] <- "Black or African Amer. alone"
+df$race2[df$RAC1P == 3] <- "Amer. Indian alone"
+df$race2[df$RAC1P == 4] <- "Alaska Native alone"
+df$race2[df$RAC1P == 5] <- "Amer. Indian + Alaska Nat. tribes"
+df$race2[df$RAC1P == 6] <- "Asian alone"
+df$race2[df$RAC1P == 7] <- "Nat. Hawaiian + Other Pac. Isl."
+df$race2[df$RAC1P == 8] <- "Some other race alone"
+df$race2[df$RAC1P == 9] <- "Two or more"
+#Marital Status
+df$mar2[df$MAR == 1] <- "Married"
+df$mar2[df$MAR == 2] <- "Widowed"
+df$mar2[df$MAR == 3] <- "Divorced"
+df$mar2[df$MAR == 4] <- "Separated"
+df$mar2[df$MAR == 5] <- "Never Married"
+#Employment Status
+df$esr2[df$ESR %in% c(1, 2, 4, 5)] <- "Employed"
+df$esr2[df$ESR == 3] <- "Unemployed"
+df$esr2[df$ESR == 6] <- "Not in labor force"
+#Citizenship
+df$cit2[df$CIT %in% c(1, 2, 3, 4)] <- "Citizen"
+df$cit2[df$CIT == 5] <- "Not citizen"
+#School
+df$schl2[df$SCHL<16 ] <- "Less than HS"
+df$schl2[df$SCHL>=16 & df$SCHL<21] <- "HS Degree"
+df$schl2[df$SCHL==21] <- "Undergraduate Degree"
+df$schl2[df$SCHL>21] <- "Graduate Degree"
+##Comparison of education attainment vs. healthcare coverage
+tab <- table(df$schl2, df$hicov2)
+#Get proportions by row
+prop.table(tab, 1)
+#Chi-square
+chisq.test(tab)
+#Set the variables
+master <- data.frame(var = c("esr2", "mar2", "race2", "sex2", "schl2", "cit2"),
+descrip = c("Employment", "Marital Status",
+"Race", "Sex", "Education", "Citizenship"))
+master[,1] <- as.character(master[,1])
+master[,2] <- as.character(master[,2])
+#Loop through each variable and print result
+for(i in 1:nrow(master)){
+print(master[i, 2])
+tab <- table(df[, master[i, 1]], df$hicov2)
+print(prop.table(tab, 1))
+print(chisq.test(tab))
+}
+#################
+## Homework #4 ##
+#################
+#Specify your name
+my.name <- "[Mengsu Wang]"
+my.email <- "[mw1091@georgetown.edu]"
+#Load the data
+library(rio)
+github.url <- "https://github.com/GeorgetownMcCourt/data-science/blob/master/homework_data/"
+file.url <- "housing_sales.Rda?raw=true"
+download.file(paste0(github.url, file.url), "temp.Rda")
+load("temp.Rda")
+#Write your code and annotation below
+#As those records are ones you'll predict
+############Task 1 - functions to perform k-folds cross validation################
+#Function 1 - randomly assign each record
+k_folds <- function(k){
+#Given a training set train, randomly assign each record to one of k-number of user
+#specified partitions
+#
+# k = user specified partitions
+vec <- runif(length(train$id))
+folds <- cut(vec, k, labels = FALSE)
+return(folds)
+}
+# Set k = 10 to solve the remaing quesitons
+k_folds(10)
+train$folds <- k_folds(10)
+#Function 2 -run a linear regression
+linear_reg <- function(data, spec){
+# data is the input data frame train
+# spec is the model specification
+error_holder <- c()
+for (i in 1:10){
+train_group <- train[train[["folds"]] != i,] # train group
+test_group <- train[train[["folds"]] == i,] # test group
+train_result <- lm(spec, data = train_group)
+predict_result <- predict.lm(train_result, data = test_group)
+mape <- 100 * mean(abs(predict_result/test_group$sale.price - 1), na.rm = TRUE)
+error_holder <- c(error_holder, mape)
+}
+return(c(mean(error_holder), sd(error_holder))) # return the mean and sd of MAPE
+}
+############Task 2 - Model Specification ################
+### Choose 3 model specification to conduct the trainning
+train$bldg_age <- as.numeric(format(train$sale.date, "%Y"))- as.numeric(train$year.built) #Consulted with Zet
+spec_1 <- as.formula("sale.price ~
+zip.code.3 + bldg_age + month + borough + bldg.class + bldg.category + p.lot.type + total.units + commercial.units + land.square.feet +
+gross.square.feet + school.distnum + p.lotarea + p.bldgarea + p.comarea + p.officearea + p.retailarea + p.garagearea + p.strgearea + p.factryarea + p.otherarea + p.numbldgs + p.numfloors +
+p.unitsres + p.lotfront + p.lotdepth + p.bldgfront + p.proximity + p.past.alteration + p.extension + p.garage + p.basement")
+spec_2 <- as.formula("sale.price ~
+zip.code + bldg_age + + month + borough + bldg.class + bldg.category + p.lot.type + total.units + commercial.units + land.square.feet +
+gross.square.feet + school.distnum + p.lotarea + p.bldgarea + p.comarea + p.officearea + p.retailarea + p.garagearea + p.strgearea + p.factryarea + p.otherarea + p.numbldgs + p.numfloors +
+p.unitsres + p.lotfront + p.lotdepth + p.bldgfront + p.proximity + p.past.alteration + p.extension + p.garage + p.basement")
+spec_3 <- as.formula ("sale.price ~ zip.code + land.square.feet + year.built + p.lotarea +
+gross.square.feet +
+commercial.units + sale.date + p.garage +
+p.comarea + bldg.category")
+model_3 <- linear_reg(train, spec_3)
+model_2 <- linear_reg(train, spec_2)
+View(test)
+train_result <- lm(spec_3, data = train)
+price_prediction <- predict.lm(train_result, test)
+my.result <- data.frame(id = test$id,
+price_prediction = price_prediction)
+View(my.result)
+#################
+## Homework #4 ##
+#################
+#Specify your name
+my.name <- "[Mengsu Wang]"
+my.email <- "[mw1091@georgetown.edu]"
+#Load the data
+library(rio)
+github.url <- "https://github.com/GeorgetownMcCourt/data-science/blob/master/homework_data/"
+file.url <- "housing_sales.Rda?raw=true"
+download.file(paste0(github.url, file.url), "temp.Rda")
+load("temp.Rda")
+#Write your code and annotation below
+#As those records are ones you'll predict
+############Task 1 - functions to perform k-folds cross validation################
+#Function 1 - randomly assign each record
+k_folds <- function(k){
+#Given a training set train, randomly assign each record to one of k-number of user
+#specified partitions
+#
+# k = user specified partitions
+vec <- runif(length(train$id))
+folds <- cut(vec, k, labels = FALSE)
+return(folds)
+}
+# Set k = 10 to solve the remaing quesitons
+k_folds(10)
+train$folds <- k_folds(10)
+#Function 2 -run a linear regression
+linear_reg <- function(data, spec){
+# data is the input data frame train
+# spec is the model specification
+error_holder <- c()
+for (i in 1:10){
+train_group <- train[train[["folds"]] != i,] # train group
+test_group <- train[train[["folds"]] == i,] # test group
+train_result <- lm(spec, data = train_group)
+predict_result <- predict.lm(train_result, data = test_group)
+mape <- 100 * mean(abs(predict_result/test_group$sale.price - 1), na.rm = TRUE)
+error_holder <- c(error_holder, mape)
+}
+return(c(mean(error_holder), sd(error_holder))) # return the mean and sd of MAPE
+}
+############Task 2 - Model Specification ################
+### Choose 3 model specification to conduct the trainning
+train$bldg_age <- as.numeric(format(train$sale.date, "%Y"))- as.numeric(train$year.built) #Consulted with Zet
+spec_1 <- as.formula("sale.price ~
+zip.code.3 + bldg_age + month + borough + bldg.class + bldg.category + p.lot.type + total.units + commercial.units + land.square.feet +
+gross.square.feet + school.distnum + p.lotarea + p.bldgarea + p.comarea + p.officearea + p.retailarea + p.garagearea + p.strgearea + p.factryarea + p.otherarea + p.numbldgs + p.numfloors +
+p.unitsres + p.lotfront + p.lotdepth + p.bldgfront + p.proximity + p.past.alteration + p.extension + p.garage + p.basement")
+spec_2 <- as.formula("sale.price ~
+zip.code + bldg_age + + month + borough + bldg.class + bldg.category + p.lot.type + total.units + commercial.units + land.square.feet +
+gross.square.feet + school.distnum + p.lotarea + p.bldgarea + p.comarea + p.officearea + p.retailarea + p.garagearea + p.strgearea + p.factryarea + p.otherarea + p.numbldgs + p.numfloors +
+p.unitsres + p.lotfront + p.lotdepth + p.bldgfront + p.proximity + p.past.alteration + p.extension + p.garage + p.basement")
+spec_3 <- as.formula ("sale.price ~ zip.code + land.square.feet + year.built + p.lotarea +
+gross.square.feet +
+commercial.units + sale.date + p.garage +
+p.comarea + bldg.category")
+###Get the results of three models
+model_1 <- linear_reg(train, spec_1)
+model_2 <- linear_reg(train, spec_2)
+model_3 <- linear_reg(train, spec_3)
+############Task 3 - Retrain the full dataset & Predict ################
+train_result <- lm(spec_3, data = train) ### use the whole train dataset to train
+price_prediction <- predict.lm(train_result, test)
+my.result <- data.frame(id = test$id,
+price_prediction = price_prediction)
+#Your final submission should contain a data frame labeled ("my.result")
+files <- list.files(path = "/Users/mikewang1091/Documents/Data Science/Final Project/Dow Jones", recursive = TRUE,
+pattern = "\\.txt$", full.names = FALSE)
+files <- list.files(path = "/Users/mikewang1091/Documents/Data Science/Final Project/Dow Jones", recursive = TRUE,
+pattern = "\\.txt$", full.names = TRUE)
+files <- list.files(path = "/Users/mikewang1091/Documents/Data Science/Final Project/Dow Jones", recursive = TRUE,
+pattern = "\\.txt$", full.names = FALSE)
+data2=lapply(files, read.table, header=TRUE, sep=",")
+for (i in 1:length(data2)){data2[[i]]<-cbind(data2[[i]],files[i])}
+data_rbind <- do.call("rbind", data2)
+files <- list.files(path = "/Users/mikewang1091/Documents/Data Science/Final Project/Dow Jones", recursive = TRUE,
+pattern = "\\.txt$", full.names = FALSE)
+data2=lapply(files, read.table, header=TRUE, sep=",")
+setwd("/Users/mikewang1091/Documents/Data Science/Final Project/Dow Jones")
+files <- list.files(path = "/Users/mikewang1091/Documents/Data Science/Final Project/Dow Jones", recursive = TRUE,
+pattern = "\\.txt$", full.names = FALSE)
+data2=lapply(files, read.table, header=TRUE, sep=",")
+for (i in 1:length(data2)){data2[[i]]<-cbind(data2[[i]],files[i])}
+data_rbind <- do.call("rbind", data2)
+View(data_rbind)
+View(data_rbind)
+colnames(data_rbind)[c(1,2,3,4,5,6,7,8)]<-c("Date", "Open", "High","Low","Close","Volume","OpenInt","Company")
+View(data_rbind)
+View(data_rbind)
+setwd("/Users/mikewang1091/Documents/Data Science/Final Project/Dow Jones")
+files <- list.files(path = "/Users/mikewang1091/Documents/Data Science/Final Project/Dow Jones", recursive = TRUE,
+pattern = "\\.txt$", full.names = FALSE)
+data2=lapply(files, read.table, header=TRUE, sep=",")
+for (i in 1:length(data2)){data2[[i]]<-cbind(data2[[i]],files[i])}
+data_rbind <- do.call("rbind", data2)
+colnames(data_rbind)[c(1,2,3,4,5,6,7,8)]<-c("Date", "Open", "High","Low","Close","Volume","OpenInt","Company")
+View(data_rbind)
+library(quantmod)
+library(tseries)
+library(timeSeries)
+library(forecast)
+library(xts)
+install.packages("Quantmod")
+install.packages("tseries")
+install.packages("timeSeries")
+install.packages("forecast")
+library(quantmod)
+library(tseries)
+library(timeSeries)
+library(forecast)
+library(xts)
