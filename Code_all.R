@@ -407,6 +407,45 @@ test$predicted <- pred.rbf.close.2017
 
 meanf1(test$ChangeClose, test$predicted) 
 
+###################
+###DECISION TREE###
+###################  
+scores2 <- data.frame() 
+for (i in unique(train$kfold)){
+  
+  # Refit with optimal
+  # cp = 0
+  fit.0 <- rpart(ChangeOpening ~ avg.senti + name + growth + 
+                   interest.rate + unemployment + open_nasdq + assets, 
+                 method = "class", data = train[train$kfold != i, ], cp = 0)
+  # printcp(fit.0)
+  # Put all cp into a data frame
+  fit.0.df <- as.data.frame(printcp(fit.0))
+  # Find the optimal cp
+  a <- min(fit.0.df$xerror)
+  b <- subset(fit.0.df, xerror == a)[, 5]
+  c <- a + b
+  d <- max(fit.0.df$xerror[fit.0.df$xerror <= c])
+  cp.opt <- max(subset(fit.0.df, xerror == d)[, 1])
+  
+  # Run the optimal decision tree
+  fit.opt <- rpart(ChangeOpening ~ avg.senti + name + growth + 
+                     interest.rate + unemployment + open_nasdq + assets, 
+                   method = "class", data = train[train$kfold != i, ], cp = cp.opt)
+  
+  # Predict values for test set
+  pred.opt.test <- predict(fit.opt, train[train$kfold == i, ], type='class')
+  scores2 <- rbind(scores2, data.frame(model = "Decision Tree", 
+                                       actual = train[train$kfold == i, ]$ChangeOpening, 
+                                       predicted = pred.opt.test))
+  #examine result
+  #table(pred.rbf)
+}
+
+meanf1(scores2$actual, scores2$predicted)
+
+#Determine which variable had the greatest influence
+fit.opt$variable.importance
 
 
 
